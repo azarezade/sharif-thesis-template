@@ -1,0 +1,33 @@
+% !TEX encoding = UTF-8 Unicode
+\chapter{اثبات‌ها}\label{Chap:App2}
+
+%==================================================================
+\section*{اثبات گزاره \ref{thm:4c-lglk}}\label{app:4c-lglk}
+با استفاده از قانون زنجیر در احتمالات می‌توان نوشت
+\begin{align}
+&f(\mathcal{D} \vert \theta) = \prod_{i=1}^K f\left((t_i,u_i,p_i)| \mathcal{D}(t_i)\right) \prod_{u=1}^{N} S(T,u) \nonumber 
+\end{align}
+که $t_0=0$ و $S_u(T)$ احتمال بقای فرآیند $\lambda_u(t)$ بعد از آخرین رویدادش است.
+\begin{align}
+S_u(T) = \exp\left(-\int_{t_{\vert\mathcal{D}_u\vert}}^T  \lambda_{u}(s) ds\right) \nonumber
+\end{align}
+اکنون با استفاده از رابطه فوق می‌توان درستنمایی را محاسبه کرد.
+ \begin{align}
+&f(\mathcal{D} \vert \theta) 
+= \prod_{u=1}^{N}	\prod_{i=1}^{\vert\mathcal{D}_u\vert} f\left((t_i,u_i,p_i)| \mathcal{D}(t_i)\right) \prod_{u=1}^{N} S(T,u) \nonumber \\
+&= \prod_{u=1}^{N}	\prod_{i=1}^{\vert\mathcal{D}_u\vert} \lambda_{u}(t_i) \exp\left(-\int_{t_{i-1}}^{t_i} \lambda_{u}(s) ds\right) f_{u}(p_i | t_i)
+ \prod_{u=1}^{N} S(T,u) \nonumber 
+\end{align}
+\begin{align}
+&= \prod_{u=1}^{N} \exp\left(-\int_0^{t_{\vert\mathcal{D}_u\vert}} \lambda_{u}(s) ds\right)  \prod_{i=1}^{\vert\mathcal{D}_u\vert} f_{u}(p_i | t_i) \lambda_{u}(t_i)  \prod_{u=1}^{N} S(T,u) \nonumber \\
+&= \prod_{u=1}^{N} \exp\left(-\int_0^{t_{\vert\mathcal{D}_u\vert}}  \lambda_{u}(s) ds\right) S(T,u)
+\prod_{i=1}^{\vert\mathcal{D}_u\vert} f_{u}(p_i | t_i) \lambda_{u}(t_i) \nonumber\\
+&= \prod_{u=1}^{N} \exp\left(-\int_0^T  \lambda_{u}(s) ds\right) 
+\prod_{i=1}^{\vert\mathcal{D}_u\vert} f_{u}(p_i | t_i) \lambda_{u}(t_i) \nonumber
+\\
+&= \prod_{u=1}^{N} \exp\left(-\int_0^T  \lambda_{u}(s) ds\right) 
+\prod_{u=1}^{N} \prod_{i=1}^{\vert\mathcal{D}_u\vert} f_{u}(p_i | t_i) \lambda_{u}(t_i) \nonumber \\
+&=\exp\left(-\int_0^T \sum_{u=1}^N \lambda_u(s) ds \right) \prod_{i=1}^K \lambda_{u_i}(t_i) f_{u_i}(p_i|t_i) \nonumber
+\end{align}	
+
+

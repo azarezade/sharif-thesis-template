@@ -1,0 +1,69 @@
+\documentclass[oneside,a4paper,12pt]{book} 
+\usepackage{sharif-thesis}
+
+% Thesis info and definitions
+%=======================================================
+\input{definitions}
+\input{info} 
+
+% Glossaries
+%=======================================================
+\input{sharif-glossary} 
+\makeglossaries
+
+
+%#######################################################
+\begin{document}
+%#######################################################
+
+
+% Front Pages
+%=======================================================
+\include{cover_fa}
+\include{confirm}
+\input{abstract_fa}
+
+% Tables
+%=======================================================
+\pagenumbering{harfi}
+\tableofcontents
+\listoffigures
+\listoftables
+\pagenumbering{arabic}  
+
+% Chapters
+%=======================================================
+\include{chap1}
+\include{chap2}
+\include{chap3}
+\include{chap4}
+\include{chap5}
+
+% Appendices
+%=======================================================
+\begin{appendices}
+\include{app1}
+\include{app2}
+\end{appendices}
+
+% References
+%=======================================================
+\include{references}
+
+% Glossaries
+%=======================================================
+\cleardoublepage
+\printpersianglossary
+\cleardoublepage
+\printenglishglossary
+\cleardoublepage
+
+%% End Pages
+%%=======================================================
+\input{abstract_en}
+\include{cover_en}
+
+
+%#######################################################
+\end{document}
+%#######################################################

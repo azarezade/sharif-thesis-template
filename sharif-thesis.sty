@@ -1,0 +1,143 @@
+% !TEX encoding = UTF-8 Unicode
+% Originally designed by Jafar Muhammadi and modified by Ali Zarezade 
+\ProvidesPackage{sharif-thesis}
+
+%=======================================================
+% Packages
+%=======================================================
+\usepackage{geometry}
+\usepackage{amsthm,amssymb,amsmath,bm}
+\usepackage{algorithmic,algorithm}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{subfig}
+\usepackage{fancyhdr}
+\usepackage[font=small,format=plain]{caption}
+\usepackage[table]{xcolor}
+\usepackage{enumerate}
+\usepackage{setspace}
+\usepackage{xspace} % to use \xspace
+\usepackage{shadethm} % shaded theorem 
+\usepackage{xifthen} % used in glossary style
+\usepackage[hang,splitrule,bottom]{footmisc} % footnote setup
+\usepackage{zref-perpage} % footnote per-page numbering
+\usepackage{appendix} % for more control over appendices
+% Do not change order of the following packages!
+\usepackage{hyperref}
+\usepackage[xindy,acronym,nonumberlist=true]{glossaries} 
+\usepackage{xepersian}
+
+
+%=======================================================
+% General setup
+%=======================================================
+\graphicspath{{images/}}
+
+
+%=======================================================
+% Page setup
+%=======================================================
+\geometry{top=3cm,right=3.5cm,bottom=2.5cm,left=2.5cm} 
+
+
+%=======================================================
+% Table of content setup
+%=======================================================
+\SepMark{-}
+\makeatletter 
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                         \refstepcounter{chapter}%
+                         \typeout{\@chapapp\space\thechapter.}%
+                         \addcontentsline{toc}{chapter}%
+                                   {\@chapapp~\protect\numberline{\thechapter}#1}%
+                    \else
+                      \addcontentsline{toc}{chapter}{#1}%
+                    \fi
+                    \chaptermark{#1}%
+                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}
+\renewcommand*\l@section{\@dottedtocline{1}{3.5em}{2.3em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{5.8em}{3.2em}} 
+\makeatother
+
+%=======================================================
+% Paragraph setup
+%=======================================================
+\linespread{1.3}
+\setlength{\parindent}{0pt} %The indent of the paragraph first line
+\setlength{\parskip}{7pt} %Befor paragraph space
+\frenchspacing
+
+
+%=======================================================
+% Font setup
+%=======================================================
+\settextfont[Scale=1.27,ItalicFont=IRXLotus-Italic]{IRXLotus}
+\setiranicfont[Scale=1.27]{IRXLotus-Italic}
+\setdigitfont[Scale=1.27]{IRXLotus}
+\defpersianfont\nastaliq[Scale=2]{IranNastaliq}
+\defpersianfont\chapternumber[Scale=3]{HMXYas}
+\defpersianfont\titr[Scale=1]{HMXTitr}
+\defpersianfont\titlefont[Scale=1.8]{HMXYas}
+
+
+%=======================================================
+% Equation setup
+%=======================================================
+% use dot instead of dash for equation  numbering 
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
+%% change equations font size
+%\DeclareMathSizes{12}{10}{9}{9}
+
+
+%=======================================================
+% Glossary setup
+%%=======================================================
+\newcommand{\trans}[3][]{
+\newtrans{#2}{#3}% add to glossary
+\term[#1]{#2}%cite the added word
+}
+
+
+%=======================================================
+% Footnote setup
+%=======================================================
+% rest footnote number in each page
+\zmakeperpage{footnote}
+\interfootnotelinepenalty=10000
+
+% correct footnote horizontal spacing
+\addtolength{\footskip}{0cm}
+\setlength{\footnotemargin}{0.2 cm}
+\setlength{\footnotesep}{0.3 cm}
+
+
+%=======================================================
+% Theorem setup
+%%=======================================================
+\theoremstyle{definition}
+\newshadetheorem{theorem}{قضیه}
+\newshadetheorem{definition}[theorem]{تعریف}
+\newshadetheorem{proposition}[theorem]{گزاره}
+\newshadetheorem{lemma}[theorem]{لم}
+
+
+%=======================================================
+% Header Footer setup
+%=======================================================
+\pagestyle{fancy}
+\fancyhead{}
+%\fancyfoot{\hline\scriptsize\lr{\copyright} کلیه حقوق این سند محفوظ بوده و متعلق به دانشگاه صنعتی شریف  می‌باشد.}
+\lhead{\fatitle - \thepage}
+\rhead{}
+\lfoot{}
+\rfoot{}
+

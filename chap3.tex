@@ -1,0 +1,48 @@
+% !TEX encoding = UTF-8 Unicode
+\chapter{مدل‌سازی رویداد}\label{Chap:Chap3}
+
+ در پژوهش‌های اولیه‌ی‌ مدل‌سازی و تحلیل تاریخچه رویداد، مفهومی به نام شبکه کمتر به چشم می‌خورد...
+
+%==================================================================
+\section{انتشار رفتارهای همبسته}\label{sec:4c}
+به رد گذاشته شده از انتشار رفتار، اطلاعات، ویروس،  بیماری، اخبار یا علاقه‌مندی کاربران به یک محتوا در شبکه‌ها، انتشار (آبشار) می‌گوییم \cite{Gomez2015}... 
+
+%------------------------------------------------------------------
+\subsection{استنتاج پارامترها}\label{sec:4c-inference}
+   برای به دست آوردن درستنمایی مدل، از گزاره زیر استفاده می‌کنیم، که به طور کلی می‌توان از آن برای به دست آوردن درستنمایی فرآیندهای نقطه‌ای نشان‌دار استفاده کرد.
+%
+\begin{proposition}\label{thm:4c-lglk}
+فرآیند نقطه‌ای نشان‌دار چند متغیره $N_u, \; u=1,2,\cdots,N$ را با تابع شدت $\lambda_u(t)$ و نشان $f_u(p \vert t)$ در نظر بگیرید.
+فرض کنید $\mathcal{D}=\{(t_i,u_i,p_i)\}_{i=1}^K$ یک وقوع از این فرآیند تصادفی در بازه $[0,T]$ باشد. آنگاه درستنمایی $\mathcal{D}$ مدل $N_u$ با پارامترهای $\theta$ را می‌توان به صورت زیر محاسبه کرد:
+\begin{align*}
+f(\mathcal{D} \vert \theta)
+ = \left[\prod_{i=1}^K \lambda_{u_i}(t_i) f_{u_i}(p_i|t_i) \right] \exp\left(-\int_0^T \sum_{u=1}^N \lambda_u(s) ds \right)
+\end{align*}
+\end{proposition}
+%
+\textbf{اثبات}.
+به پیوست \ref{app:4c-lglk}، مراجعه کنید.
+
+\begin{table}[!ht]
+% set vertical spacing between rows
+\renewcommand{\arraystretch}{1.2} 
+\linespread{1.2}\selectfont\centering
+\caption{پارامترهای مدل زمانی داده‌های ورود کاربران.}
+\label{tbl:notation}
+%\begin{latin}
+\small
+\begin{tabular}{c|r} 
+\text{پارامتر} & \text{توضیح} \vspace{1mm}
+	 \\ 
+	\hline
+	$\beta_{u}$	& پارامتر هسته $u$ \\	
+	$\mu_{uc}$	& شدت پایه کاربر $u$ در دسته $c$\\
+	$\alpha_{vu}$	&
+تاثیر کاربر $u$ بر $v$
+	 \\	
+	$\eta_{uc}$	& تمایل کاربر $u$ به اکتشاف مکان‌های جدید از دسته  $c$ \\			
+\end{tabular}
+%\end{latin}
+\end{table}
+
+
